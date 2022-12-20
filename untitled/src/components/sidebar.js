@@ -1,12 +1,15 @@
-import React from 'react';
-import { HiOutlineHome, HiOutlineInformationCircle } from 'react-icons/hi';
+import React, {useState} from 'react';
+import '../App.css';
+import { HiOutlineHome, HiOutlineInformationCircle, HiOutlineMenuAlt4 } from 'react-icons/hi';
 import { IoIosPeople, } from 'react-icons/io';
 import { RiCodeSSlashLine, } from 'react-icons/ri';
 import { BsPerson, } from 'react-icons/bs';
-import { TbArrowRampRight2, } from 'react-icons/tb';
 import { NavLink } from 'react-router-dom';
 
-const Sidebar = ({Children}) => {
+
+const Sidebar = ({children}) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle = () => setIsOpen(!isOpen);
     const menuItem=[
     {
         path: "/home",
@@ -25,7 +28,7 @@ const Sidebar = ({Children}) => {
     },
     {
         path: "/about",
-        name: "About",
+        name: "About us",
         icon: <HiOutlineInformationCircle/>
     },
     {
@@ -36,24 +39,24 @@ const Sidebar = ({Children}) => {
 ]
 
     return (
-    <div className="flex mx-10 fixed">
-        <div className="bg-slate-800 h-screen ">
-            <div className="flex m-7 gap-7 ">
-                <h1 className="text-3xl text-white">Untitled</h1>
-                <div className="pt-2 text-2xl text-white hover:scale-110">
-                    <TbArrowRampRight2/>
+        <div className="flex w-full ">
+            <div style={{width: isOpen ? "300px":"65px"}}className="bg-slate-900 text-white h-[100vh] px-1 py-4 transition-0.5 duration-500">
+            <div className="flex items-center p-6">
+                <h1 style={{ display: isOpen ? "block" : "none" }} className="text-3xl text-center text-white ">Untitled</h1>
+                    <div style={{ marginLeft: isOpen ? "100px" : "-6px" }} className="flex text-2xl cursor-pointer hover:text-semibold">
+                        <HiOutlineMenuAlt4 onClick={toggle}/>
                 </div>
             </div>
             {
                 menuItem.map((item, index) => (
-                    <NavLink to={item.path} keys={index} className="flex ml-6 pt-8 gap-4" activeclassName="active">
-                        <div className=" text-gray-200 text-2xl "> {item.icon} </div>
-                        <div className=" text-gray-400 hover:scale-105 hover:text-gray-200 w-32 px-1 hover:bg-gray-700 rounded-sm">{item.name}</div>
+                    <NavLink to={item.path} keys={index} className="flex text-gray-200 hover:tracking-wide m-2 p-2 gap-4 rounded-xl" activeclassName="active">
+                        <div className=" text-2xl  "> {item.icon} </div>
+                        <div style={{ display: isOpen ? "block" : "none" }} className={` whitespace-pre duration-500 ${!isOpen && "opacity-0 translate-x-28 overflow-hidden "}`}>{item.name}</div>
                     </NavLink>
                 ))
             }
         </div>
-        <main>{Children}</main>
+        <main className="w-full p-8">{children}</main>
     </div>
     );
 };

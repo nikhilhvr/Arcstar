@@ -2,7 +2,7 @@ import React from 'react';
 
 const Compiler = () => {
   return (
-    <div>Compiler</div>
+    <div className="text-3xl">Voh kya hota hai? 🤔</div>
   );
 };
 
