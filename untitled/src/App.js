@@ -6,6 +6,7 @@ import Community from './webpages/Community';
 import Compiler from './webpages/Compiler';
 import About from './webpages/About';
 import Profile from './webpages/Profile';
+import Signup from './webpages/Signup';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/compiler" element={<Compiler />} />
           <Route path="/about" element={<About />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </Sidebar>
     </BrowserRouter>
