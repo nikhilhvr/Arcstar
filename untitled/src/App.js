@@ -6,7 +6,7 @@ import Community from './webpages/Community';
 import Profile from './webpages/Profile';
 import Compiler from './webpages/Compiler';
 import About from './webpages/About';
-import Signup from './webpages/Signup';
+import Signup from './webpages/Signuppage';
 
 
 const App = () => {
