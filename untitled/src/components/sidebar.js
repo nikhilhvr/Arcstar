@@ -40,7 +40,7 @@ const Sidebar = () => {
 
 const user=[
     {
-        path: "/signup",
+        path: "/login",
         name: "LogIn / SignUp "
     },
 ]
